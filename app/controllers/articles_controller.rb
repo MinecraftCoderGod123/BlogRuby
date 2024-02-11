@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_article, only: %i[ show edit update destroy like]
 
   # GET /articles or /articles.json
   def index
@@ -8,6 +8,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+  end
+
+
+  def like
+    @article.increment!(:likes)
+    redirect_to articles_path
   end
 
   # GET /articles/new
@@ -65,6 +71,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:content, :title, :comments, :likes)
+      params.require(:article).permit(:content, :title, :comments)
     end
 end

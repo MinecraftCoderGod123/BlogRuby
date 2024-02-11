@@ -19,6 +19,9 @@
     <%= article.likes %>
   </p>
 
+  <%= link_to "Like This", like_article_path(article), class: "mx-3 px-6 text-uppercase bg-red-400 py-3 rounded text-white hover:bg-red-600 " %>
+
+
   <% if action_name != "show" %>
     <%= link_to "Show this article", article, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this article", edit_article_path(article), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
